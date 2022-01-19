@@ -1,11 +1,16 @@
 import '../styles/App.scss';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import callToApi from '../services/api';
 
 function App() {
-  const [word, setWord] = useState('katakroker');
+  const [word, setWord] = useState('');
   const [userLetters, setUserLetters] = useState([]);
   const [lastLetter, setLastLetter] = useState([]);
-  
+  useEffect(() => {
+    callToApi().then (data => {
+      setWord(data);
+    });
+  }, []);
 
   let wordLetters;
 
@@ -14,13 +19,10 @@ function App() {
     const valueInput = eve.currentTarget.value;
     let er = new RegExp(/^[a-zA-ZáäéëíïóöúüÁÄÉËÍÏÓÖÚÜñÑ]?$/);
     if (er.test(valueInput)) {
-      console.log(er.test(valueInput));
       setLastLetter(valueInput)
       userLetters.push(lastLetter);
       setUserLetters(userLetters); 
   }
-  //guardo en userLetters la ultima letra introducida por el usuario.
-  
 };
 
   const renderSolutionLetters = () =>{
