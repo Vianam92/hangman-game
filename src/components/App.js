@@ -27,7 +27,6 @@ function App() {
 
   const renderSolutionLetters = () =>{
    wordLetters = word.split('');
-  // const filter = wordLetters.filter(x => userLetters.includes(x) === true);
     return wordLetters.map((wordLetter,index) => {
       return <li key={index} className = "letter">
         <small>{userLetters.includes(wordLetter)?wordLetter:""}</small>
