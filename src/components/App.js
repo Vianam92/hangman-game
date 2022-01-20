@@ -16,8 +16,6 @@ function App() {
     });
   }, []);
 
-  let wordLetters;
-
   const handlerInput = (eve) => {
     //escucho la letra de la usuaria
     const valueInput = eve.currentTarget.value;
@@ -29,23 +27,23 @@ function App() {
   }
 };
 
-  const renderSolutionLetters = () =>{
+  /*const renderSolutionLetters = () =>{
    wordLetters = word.split('');
     return wordLetters.map((wordLetter,index) => {
       return <li key={index} className = "letter">
         <small>{userLetters.includes(wordLetter)?wordLetter:""}</small>
         </li>
     })
-  }
+  }*/
 
-  const renderErrorLetters = () =>{
+  /*const renderErrorLetters = () =>{
     const filter = userLetters.filter(x => word.includes(x) === false);
     return filter.map((wordLetter, index) => {
       return <li key={index} className="letter">
         <small>{wordLetter}</small>
       </li>
     })
-  };
+  };*/
 
   const filterErrors = userLetters.filter(x => word.includes(x) === false);
 
@@ -55,8 +53,8 @@ function App() {
         <Header/>
         <main className="main">
           <section>
-           <SolutionLetters renderSolutionLetters={renderSolutionLetters()}/>
-            <ErrorLetters renderErrorLetters={renderErrorLetters()}/>
+           <SolutionLetters userLetters={userLetters} word={word}/>
+            <ErrorLetters userLetters={userLetters} word={word}/>
             <form className="form">
               <label className="title" htmlFor="last-letter">
                 Escribe una letra:
