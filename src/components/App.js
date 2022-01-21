@@ -5,6 +5,7 @@ import Header  from './Header';
 import Dummy  from './Dummy';
 import SolutionLetters from './SolutionLetters'
 import ErrorLetters from './ErrorLetters';
+import Form from './Form';
 
 function App() {
   const [word, setWord] = useState('');
@@ -16,9 +17,9 @@ function App() {
     });
   }, []);
 
-  const handlerInput = (eve) => {
+  const handlerInput = (value) => {
     //escucho la letra de la usuaria
-    const valueInput = eve.currentTarget.value;
+    const valueInput = value;
     let er = new RegExp(/^[a-zA-ZáäéëíïóöúüÁÄÉËÍÏÓÖÚÜñÑ]?$/);
     if (er.test(valueInput)) {
       setLastLetter(valueInput)
@@ -55,21 +56,7 @@ function App() {
           <section>
            <SolutionLetters userLetters={userLetters} word={word}/>
             <ErrorLetters userLetters={userLetters} word={word}/>
-            <form className="form">
-              <label className="title" htmlFor="last-letter">
-                Escribe una letra:
-              </label>
-              <input
-                autoComplete="off"
-                className="form__input"
-                maxLength="1"
-                type="text"
-                name="last-letter"
-                id="last-letter"
-                onChange={handlerInput}
-                value={lastLetter}
-              />
-            </form>
+            <Form handlerInput={handlerInput} lastLetter={lastLetter}/>
           </section>
           <Dummy numberOfError={filterErrors.length}/>
           
