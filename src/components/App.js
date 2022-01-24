@@ -6,6 +6,11 @@ import Dummy  from './Dummy';
 import SolutionLetters from './SolutionLetters'
 import ErrorLetters from './ErrorLetters';
 import Form from './Form';
+import Footer from "./Footer"
+import Intructions from './Intructions'
+import Options from './Options'
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function App() {
   const [word, setWord] = useState('');
@@ -28,23 +33,6 @@ function App() {
   }
 };
 
-  /*const renderSolutionLetters = () =>{
-   wordLetters = word.split('');
-    return wordLetters.map((wordLetter,index) => {
-      return <li key={index} className = "letter">
-        <small>{userLetters.includes(wordLetter)?wordLetter:""}</small>
-        </li>
-    })
-  }*/
-
-  /*const renderErrorLetters = () =>{
-    const filter = userLetters.filter(x => word.includes(x) === false);
-    return filter.map((wordLetter, index) => {
-      return <li key={index} className="letter">
-        <small>{wordLetter}</small>
-      </li>
-    })
-  };*/
 
   const filterErrors = userLetters.filter(x => word.includes(x) === false);
 
@@ -52,15 +40,31 @@ function App() {
     <div className="title">
       <div className="page">
         <Header/>
-        <main className="main">
+        <Switch>
+          <Route exact path="/">
+          <main className="main">
           <section>
            <SolutionLetters userLetters={userLetters} word={word}/>
             <ErrorLetters userLetters={userLetters} word={word}/>
             <Form handlerInput={handlerInput} lastLetter={lastLetter}/>
           </section>
           <Dummy numberOfError={filterErrors.length}/>
-          
         </main>
+          </Route>
+          <Route exact path="/instructions">
+            <Intructions/>
+            <Dummy numberOfError={filterErrors.length}/>
+          </Route>
+          <Route exact path="/options">
+            <Options/>
+            <Dummy  numberOfError={filterErrors.length}/>
+          </Route>
+
+        </Switch>
+        
+        <footer>
+          <Footer/>
+        </footer>
       </div>
     </div>
   );
