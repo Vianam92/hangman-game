@@ -16,7 +16,7 @@ const Footer = () => {
             </NavLink>
           </li>
           <li className="footer__menu-item">
-            <NavLink className="footer__menu-link" to="/#/options">
+            <NavLink className="footer__menu-link" to="/options">
               Más opciones
             </NavLink>
           </li>

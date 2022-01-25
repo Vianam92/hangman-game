@@ -13,7 +13,7 @@ const InputLabel = (props) => {
         autoComplete="off"
         className="form__input"
         maxLength="1"
-        type="text"
+        type={props.inputType}
         name="last-letter"
         id="last-letter"
         onChange={handleChangeInput}
@@ -23,4 +23,7 @@ const InputLabel = (props) => {
   );
 };
 
+InputLabel.defaultProps = {
+  inputType: 'text'
+};
 export default InputLabel;

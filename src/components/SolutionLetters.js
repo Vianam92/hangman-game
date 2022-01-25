@@ -1,10 +1,10 @@
 let wordLetters;
-const SolutionLetters = (props) => {
+const SolutionLetters = ({userLetters,word}) => {
   const renderSolutionLetters = () =>{
-    wordLetters = props.word.split('');
+    wordLetters = word.split('');
      return wordLetters.map((wordLetter,index) => {
        return <li key={index} className = "letter">
-         <small>{props.userLetters.includes(wordLetter)?wordLetter:""}</small>
+         <small>{userLetters.includes(wordLetter)?wordLetter:""}</small>
          </li>
      })
    }

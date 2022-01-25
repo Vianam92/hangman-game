@@ -9,6 +9,7 @@ import Form from './Form';
 import Footer from "./Footer"
 import Intructions from './Intructions'
 import Options from './Options'
+import Loader from './Loader';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 
@@ -16,8 +17,12 @@ function App() {
   const [word, setWord] = useState('');
   const [userLetters, setUserLetters] = useState([]);
   const [lastLetter, setLastLetter] = useState([]);
+  const [loading,setLoading] = useState(false);
+  
   useEffect(() => {
+    setLoading(true);
     callToApi().then (data => {
+      setLoading(false);
       setWord(data);
     });
   }, []);
@@ -32,7 +37,12 @@ function App() {
       setUserLetters(userLetters); 
   }
 };
-
+   
+  const handleChange = (value) =>{
+    setWord(value);
+    setUserLetters([]);
+    setLastLetter([]);
+  };
 
   const filterErrors = userLetters.filter(x => word.includes(x) === false);
 
@@ -40,6 +50,7 @@ function App() {
     <div className="title">
       <div className="page">
         <Header/>
+        <Loader loading={loading}/>
         <Switch>
           <Route exact path="/">
           <main className="main">
@@ -56,7 +67,7 @@ function App() {
             <Dummy numberOfError={filterErrors.length}/>
           </Route>
           <Route exact path="/options">
-            <Options/>
+            <Options handleChange={handleChange}/>
             <Dummy  numberOfError={filterErrors.length}/>
           </Route>
 
@@ -69,5 +80,8 @@ function App() {
     </div>
   );
 }
+
+// Estas son las default props
+
 
 export default App;
