@@ -2,16 +2,10 @@ const Intructions = () => {
   return (
     <section className="instructions">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        provident nisi voluptatem est nostrum optio perferendis doloremque,
-        delectus at, assumenda suscipit sit odio ipsum error consequatur numquam
-        vero impedit nulla?
+        Introduce una letra y si fallas se va rellenando el muñequito, cuando se complete habŕas perdido.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-        animi voluptatem quis impedit amet in dicta soluta explicabo, fugit
-        magni mollitia, pariatur eos, repellendus aut esse recusandae minima eum
-        eaque.
+        Si quieres jugar con alguien más en la sesión de opciones puedes poner un palabra a adivinar y jugar junt@s.
       </p>
     </section>
   );
