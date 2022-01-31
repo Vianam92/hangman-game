@@ -47,6 +47,7 @@ function App() {
   const filterErrors = userLetters.filter(x => word.includes(x) === false);
 
   return (
+    
     <div className="title">
       <div className="page">
         <Header/>
